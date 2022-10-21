@@ -1,7 +1,7 @@
 # Simple Text Editor  
 
 TextEditor where text file can open,edit,copy,paste,save and print.  
-Language used: **Java**, **JFrame**.  
+Language used: **Java**.  
 Software used: **Intellij**.   
   
 There are three Menu in MenuBar:  
