@@ -2,6 +2,7 @@
 
 TextEditor where text file can open,edit,copy,paste,save and print.  
 Language used: **Java**.  
+Technology used: **Java Swing**,**Java AWT**.
 Software used: **Intellij**.   
   
 There are three Menu in MenuBar:  
