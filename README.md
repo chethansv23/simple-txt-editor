@@ -2,7 +2,7 @@
 
 TextEditor where text file can open,edit,copy,paste,save and print.  
 Language used: **Java**.  
-Technology used: **Java Swing**,**Java AWT**.
+Technology used: **Java Swing**, **Java AWT**.  
 Software used: **Intellij**.   
   
 There are three Menu in MenuBar:  
@@ -24,6 +24,9 @@ There are three Menu in MenuBar:
  
   
 ## Close  
-   As we click on Close Menubar the text editor window will be closed.  
+   ![This is an image](https://github.com/chethansv23/simple-txt-editor/blob/main/close.png)  
+   Close Menu has one MenuItems:    
+   a)Close Window: Closes the entire program not only the jframe. 
    
 
+**Thank You**
