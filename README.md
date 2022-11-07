@@ -20,7 +20,7 @@ There are four Menu in MenuBar:
    Edit Menu has four MenuItems:  
    a)Cut: As we click on Put. The selected text will be cut.  
    b)Copy: As we click on Copy. The selected text will be copied.  
-   c)Paste: As we click on Paste the copied or cuted text will be pasted on the present path.
+   c)Paste: As we click on Paste the copied or cuted text will be pasted on the present path.  
    d)FontSize:  As we click on Fontsize a new window pop up and can type the required size.
  
  ## Theme  
