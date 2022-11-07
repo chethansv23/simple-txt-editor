@@ -3,33 +3,23 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+
 import java.awt.print.PrinterException;
 import java.io.*;
-import java.util.Set;
-import java.util.TreeSet;
 
-public class TextEditor extends JFrame implements ActionListener, KeyListener {
+
+public class TextEditor extends JFrame implements ActionListener {
     JFrame frame;
     JTextArea text;
-    Set<String> data1;
+
     TextEditor()
     {
         //created frame
         frame=new JFrame("Text Editor");
         frame.setSize(500,500);
 
-        //auto suggestion
-        data1 = new TreeSet<String>();
-        String[] userdata = {"chethan","is","the","person","who","has","struggled","lot","in","life"};
-        for(String i:userdata)
-        {
-            data1.add(i);
-        }
-
         //created text area
         text = new JTextArea();
-
 
         frame.add(text);
 
@@ -38,12 +28,11 @@ public class TextEditor extends JFrame implements ActionListener, KeyListener {
         //created Menubar
         JMenuBar menuBar = new JMenuBar();
 
-        //created file, edit and close menu
+        //created file, edit,theme and close menu
         JMenu fileMenu = new JMenu("File Menu");
         JMenu editMenu = new JMenu("Edit Menu");
-        JMenu Close = new JMenu("Close");
         JMenu Theme = new JMenu("Theme");
-
+        JMenu Close = new JMenu("Close");
 
         //added to menubar
         menuBar.add(fileMenu);
@@ -51,13 +40,22 @@ public class TextEditor extends JFrame implements ActionListener, KeyListener {
         menuBar.add(Theme);
         menuBar.add(Close);
 
-        //creating menu items in file menu
+        //creating menu items
         JMenuItem Open = new JMenuItem("Open File");
         JMenuItem Save = new JMenuItem("Save File");
         JMenuItem Print = new JMenuItem("Print File");
         JMenuItem New = new JMenuItem("New File");
+        //created jmenuitem for editmenu
+        JMenuItem Cut = new JMenuItem("Cut");
+        JMenuItem Copy = new JMenuItem("Copy");
+        JMenuItem Paste = new JMenuItem("Paste");
+        JMenuItem FontSize = new JMenuItem("FontSize");
+        //created jmenuitem for theme
         JMenuItem Dark = new JMenuItem("Dark");
         JMenuItem Light = new JMenuItem("Light");
+        //creating a close window item in close menu
+        JMenuItem CloseWindow = new JMenuItem("Close Window");
+
 
         //added items to filemenu
         fileMenu.add(Open);
@@ -65,45 +63,34 @@ public class TextEditor extends JFrame implements ActionListener, KeyListener {
         fileMenu.add(Print);
         fileMenu.add(New);
 
+        //added item to edit menu
+        editMenu.add(Cut);
+        editMenu.add(Copy);
+        editMenu.add(Paste);
+        editMenu.add(FontSize);
+
         //add items to Theme
         Theme.add(Dark);
         Theme.add(Light);
 
-        //action for item
+        //add items to CLOSE
+        Close.add(CloseWindow);
+
+        //action for menuitem
         Open.addActionListener(this);
         Save.addActionListener(this);
         Print.addActionListener(this);
         New.addActionListener(this);
-
-        //created jmenuitem for editmenu
-        JMenuItem Cut = new JMenuItem("Cut");
-        JMenuItem Copy = new JMenuItem("Copy");
-        JMenuItem Paste = new JMenuItem("Paste");
-        JMenuItem FontSize = new JMenuItem("FontSize");
-
-        //action for item
         Cut.addActionListener(this);
         Copy.addActionListener(this);
         Paste.addActionListener(this);
         Dark.addActionListener(this);
         Light.addActionListener(this);
         FontSize.addActionListener(this);
-
-        //added item to edit menu
-        editMenu.add(Cut);
-        editMenu.add(Copy);
-        editMenu.add(Paste);
-        editMenu.add(FontSize);
-        text.addKeyListener(this);
-        //creating a close window item in close menu
-        JMenuItem CloseWindow = new JMenuItem("Close Window");
-        Close.add(CloseWindow);
-        //closewindow actionlistener
         CloseWindow.addActionListener(this);
 
         frame.setJMenuBar(menuBar);
         frame.show();
-
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -115,18 +102,18 @@ public class TextEditor extends JFrame implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
-        if(s=="Cut")
+        if(s.equals("Cut"))
         {
             text.cut();
         }
-        else if(s=="Copy")
+        else if(s.equals("Copy"))
         {
             text.copy();
         }
-        else if(s=="Paste") {
+        else if(s.equals("Paste")) {
             text.paste();
         }
-        else if(s=="Print File")
+        else if(s.equals("Print File"))
         {
             try {
                 text.print();
@@ -134,11 +121,11 @@ public class TextEditor extends JFrame implements ActionListener, KeyListener {
                 throw new RuntimeException(ex);
             }
         }
-        else if(s=="New File")
+        else if(s.equals("New File"))
         {
             text.setText("");
         }
-        else if(s=="Open File")
+        else if(s.equals("Open File"))
         {
             JFileChooser jFileChooser = new JFileChooser("C:");
             int ans = jFileChooser.showOpenDialog(null);
@@ -161,7 +148,7 @@ public class TextEditor extends JFrame implements ActionListener, KeyListener {
 
             }
         }
-        else if (s=="Save File")
+        else if (s.equals("Save File"))
         {
             JFileChooser jFileChooser = new JFileChooser("C:");
             int ans = jFileChooser.showSaveDialog(null);
@@ -179,13 +166,13 @@ public class TextEditor extends JFrame implements ActionListener, KeyListener {
                 }
             }
         }
-        else if(s == "Close Window")
+        else if(s.equals("Close Window"))
         {
             //completely closes the program not only the frame
             frame.dispose();
 
         }
-        else if (s=="FontSize")
+        else if (s.equals("FontSize"))
         {
             String sizeOfFont = JOptionPane.showInputDialog(null,"Enter Font Size",JOptionPane.OK_CANCEL_OPTION);
             if (sizeOfFont != null){
@@ -194,59 +181,15 @@ public class TextEditor extends JFrame implements ActionListener, KeyListener {
                 text.setFont(font);
             }
         }
-        else if(s=="Dark")
+        else if(s.equals("Dark"))
         {
             text.setBackground(Color.DARK_GRAY);        //dark Theme
             text.setForeground(Color.WHITE);
         }
-        else if (s=="Light")
+        else if (s.equals("Light"))
         {
-            text.setBackground(Color.WHITE);        //dark Theme
+            text.setBackground(Color.WHITE);        //light Theme
             text.setForeground(Color.BLACK);
-        }
-    }
-
-    @Override
-    public void keyTyped(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-         String checktext = text.getText();
-        if(e.getKeyCode()==KeyEvent.VK_BACK_SPACE||e.getKeyCode()==KeyEvent.VK_DELETE)
-        {
-
-        }
-        else
-        {
-            String to_check=text.getText();
-            int to_check_len=to_check.length();
-            for(String data:data1)
-            {
-                String check_from_data="";
-                for(int i=0;i<to_check_len;i++)
-                {
-                    if(to_check_len<=data.length())
-                    {
-                        check_from_data = check_from_data+data.charAt(i);
-                    }
-                }
-                //System.out.print(check_from_data);
-                if(check_from_data.equals(to_check))
-                {
-                    //System.out.print("Found");
-                    text.setText(data);
-                    text.setSelectionStart(to_check_len);
-                    text.setSelectionEnd(data.length());
-                    break;
-                }
-            }
         }
     }
 }
