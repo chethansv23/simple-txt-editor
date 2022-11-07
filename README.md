@@ -5,7 +5,7 @@ Language used: **Java**.
 Technology used: **Java Swing**, **Java AWT**.  
 Software used: **Intellij**.   
   
-There are three Menu in MenuBar:  
+There are four Menu in MenuBar:  
   
 ## File Menu   
    ![This is an image](https://github.com/chethansv23/simple-txt-editor/blob/main/file.png)  
@@ -17,12 +17,20 @@ There are three Menu in MenuBar:
       
 ## Edit Menu  
    ![This is an image](https://github.com/chethansv23/simple-txt-editor/blob/main/edit.png)  
-   Edit Menu has three MenuItems:  
+   Edit Menu has four MenuItems:  
    a)Cut: As we click on Put. The selected text will be cut.  
    b)Copy: As we click on Copy. The selected text will be copied.  
    c)Paste: As we click on Paste the copied or cuted text will be pasted on the present path.
+   d)FontSize:  As we click on Fontsize a new window pop up and can type the required size.
  
-  
+ ## Theme  
+ ![This is an image](https://github.com/chethansv23/simple-txt-editor/blob/main/theme.png)  
+  Theme Menu has two MenuItems:  
+  a)Dark: As we click on Dark the textbackground color change to dark_gray and text letters will be white.  
+  b)Light: As we click on Light the textbackground color change to white and text letters will be black.  
+   ![This is an image](https://github.com/chethansv23/simple-txt-editor/blob/main/dark.png)   
+   
+   
 ## Close  
    ![This is an image](https://github.com/chethansv23/simple-txt-editor/blob/main/close.png)  
    Close Menu has one MenuItems:    
